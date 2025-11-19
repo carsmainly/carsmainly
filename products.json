@@ -1,13 +1,14 @@
 [
   {
     "id": 1,
-    "name": "testing",
+    "name": "Lamborghini cenetnario Roadster",
     "category": "Hot Wheels",
-    "price": 69,
-    "description": "test",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkCBluDgcfGxFAEqVxSne0nuMCY76UlFe0IQ&s",
+    "price": 799,
+    "description": "Yellow beauty Built by the lambo",
+    "image": "https://i0.wp.com/grovertechno.com/wp-content/uploads/2025/10/11-2.webp?fit=1000%2C1000&ssl=1",
     "soldOut": false
   }
 ]
+
 
 
