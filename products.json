@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "name": "Placeholder",
+    "category": "Hot Wheels",
+    "price": 0,
+    "description": "test",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkCBluDgcfGxFAEqVxSne0nuMCY76UlFe0IQ&s",
+    "soldOut": false
+  }
+]

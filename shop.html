@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CarsMainly — Shop</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#060607;
+  --panel:#0f0f10;
+  --accent:#ff0033;
+  --accent-2:#ff7b6b;
+  --muted:#bfbfbf;
+  --glass: rgba(255,255,255,0.04);
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:"Poppins",system-ui,Segoe UI,Helvetica,Arial,sans-serif;
+  background:linear-gradient(180deg,var(--bg) 0%, #0b0b0b 100%);
+  color:#f5f5f5;
+  line-height:1.4;
+}
+
+/* NAVBAR (MATCHES HOME) */
+.nav{
+  position:sticky;
+  top:0;
+  z-index:60;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 32px;
+  background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.25));
+  border-bottom:1px solid rgba(255,255,255,0.03);
+  backdrop-filter: blur(6px);
+}
+
+.brand{ display:flex; gap:12px; align-items:center; }
+.logo { width:55px;height:55px;border-radius:10px;overflow:hidden; }
+.logo img{ width:100%;height:100%;object-fit:cover; }
+.brand h1{ font-size:18px;margin:0;font-weight:800; }
+
+/* Desktop links */
+.links{
+  display:flex !important;
+  gap:22px;
+  align-items:center;
+}
+.links a{
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:600;
+  transition:all .18s;
+}
+.links a:hover{
+  color:var(--accent);
+}
+
+/* Hamburger (MATCHES HOME) */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  background:none;
+  border:none;
+  cursor:pointer;
+}
+.hamburger span{
+  width:26px;
+  height:3px;
+  background:var(--muted);
+  border-radius:3px;
+  transition:0.3s;
+}
+.hamburger.active span:nth-child(1){
+  transform:translateY(8px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2){
+  opacity:0;
+}
+.hamburger.active span:nth-child(3){
+  transform:translateY(-8px) rotate(-45deg);
+}
+
+/* Mobile Menu (MATCHES HOME) */
+@media(max-width:768px){
+  .links{
+    display:none !important;
+    position:absolute;
+    top:78px;
+    right:0;
+    flex-direction:column;
+    align-items:flex-start;
+    width:170px;
+    padding:12px;
+    gap:6px;
+    background:var(--panel);
+    border-radius:12px 0 0 12px;
+    border:1px solid rgba(255,255,255,0.05);
+    box-shadow:0 12px 30px rgba(0,0,0,0.6);
+  }
+  .links a{
+    width:100%;
+    padding:10px 6px;
+  }
+  .links.show{
+    display:flex !important;
+  }
+  .hamburger{
+    display:flex;
+  }
+}
+
+/* SECTION TITLE */
+h2.section-title{
+  text-align:center;
+  font-size:34px;
+  margin:40px auto 10px;
+  font-weight:900;
+  letter-spacing:1px;
+  color:#fff;
+}
+
+/* WRAPPER FOR STRIP */
+.container{
+  max-width:1100px;
+  margin:0 auto 60px;
+  padding:0 16px;
+}
+
+/* PRODUCT STRIP */
+.strip{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:22px;
+  min-height:150px;
+  border:2px dashed rgba(255,255,255,0.25);
+  border-radius:12px;
+  background:rgba(255,255,255,0.02);
+  position:relative;
+  padding:20px;
+}
+@media (max-width:900px){ .strip{ grid-template-columns:repeat(2, 1fr);} }
+@media (max-width:600px){ .strip{ grid-template-columns:1fr; padding:16px;} }
+
+.card{
+  background:linear-gradient(180deg,var(--panel), #111);
+  border-radius:14px;
+  padding:14px;
+  border:1px solid rgba(255,255,255,0.03);
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
+  transition:transform .18s, box-shadow .18s;
+}
+.card img{ width:100%; border-radius:10px; display:block; }
+.card h4{ margin:12px 0 6px; color:var(--accent-2); font-size:16px; }
+.card p{ margin:0; color:var(--muted); font-size:14px; }
+.card .price{ margin-top:10px; font-weight:800; color:var(--accent); }
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 16px 40px rgba(255,0,51,0.18);
+}
+.sold-out{ color:#ff0033; font-weight:800; text-align:center; margin-top:6px; }
+
+.empty-msg{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  color:#ccc;
+  font-weight:700;
+  font-size:22px;
+  text-align:center;
+}
+
+.buy-now{
+  margin-top:8px;
+  display:block;
+  text-align:center;
+  background:var(--accent);
+  color:#fff;
+  padding:8px 12px;
+  border-radius:6px;
+  text-decoration:none;
+  font-weight:700;
+  transition:all 0.2s;
+}
+.buy-now:hover{
+  background:var(--accent-2);
+}
+
+/* FOOTER */
+footer{
+  border-top:1px solid rgba(255,255,255,0.02);
+  padding:28px 20px;
+  text-align:center;
+  color:var(--muted);
+  margin-top:80px;
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="brand">
+    <div class="logo"><img src="logo.jpg"></div>
+    <h1>CarsMainly</h1>
+  </div>
+
+  <nav class="links" aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <button class="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div id="products-container"></div>
+
+<footer>
+  © 2025 CarsMainly · Crafted with speed & style
+</footer>
+
+<script>
+// Hamburger toggle (MATCHES HOME)
+const ham = document.querySelector(".hamburger");
+const links = document.querySelector(".links");
+
+ham.addEventListener("click", () => {
+  ham.classList.toggle("active");
+  links.classList.toggle("show");
+});
+
+// Load products
+const container = document.getElementById('products-container');
+const categories = ["Hot Wheels","Car Accessories","Car Décor"];
+const sellerNumber = "+918891515142";
+
+const sections = {};
+categories.forEach(cat=>{
+  const title = document.createElement('h2');
+  title.className = 'section-title';
+  title.textContent = cat;
+  container.appendChild(title);
+
+  const wrapper = document.createElement('div');
+  wrapper.className = 'container';
+  container.appendChild(wrapper);
+
+  const section = document.createElement('section');
+  section.className = 'strip';
+  wrapper.appendChild(section);
+
+  sections[cat] = section;
+});
+
+fetch('products.json')
+  .then(res=>res.json())
+  .then(products=>{
+    categories.forEach(cat=>{
+      const filtered = products.filter(p=>p.category===cat);
+      if(filtered.length === 0){
+        const emptyMsg = document.createElement('div');
+        emptyMsg.className = 'empty-msg';
+        emptyMsg.textContent = 'No products available yet.';
+        sections[cat].appendChild(emptyMsg);
+      } else {
+        filtered.forEach(p=>{
+          const card = document.createElement('div');
+          card.className = 'card';
+          const message = encodeURIComponent(`Hi! I want to buy a "${p.name}" from CarsMainly.`);
+          const whatsappLink = `https://wa.me/${sellerNumber}?text=${message}`;
+          card.innerHTML = `
+            <img src="${p.image}">
+            <h4>${p.name}</h4>
+            <p>${p.description}</p>
+            <div class="price">₹${p.price}</div>
+            ${p.soldOut 
+              ? '<div class="sold-out">Sold Out</div>' 
+              : `<a href="${whatsappLink}" target="_blank" class="buy-now">Buy Now</a>`}
+          `;
+          sections[cat].appendChild(card);
+        });
+      }
+    });
+  })
+  .catch(err=>{ console.error("Error loading JSON:", err); });
+</script>
+
+</body>
+</html>

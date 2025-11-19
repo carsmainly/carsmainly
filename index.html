@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CarsMainly — Home</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#060607;
+  --panel:#0f0f10;
+  --accent:#ff0033;
+  --accent-2:#ff7b6b;
+  --muted:#bfbfbf;
+  --glass: rgba(255,255,255,0.04);
+}
+
+*{box-sizing:border-box;}
+html,body{height:100%; margin:0;}
+body{
+  font-family:"Poppins",system-ui,Segoe UI,Helvetica,Arial,sans-serif;
+  background:linear-gradient(180deg,var(--bg) 0%, #0b0b0b 100%);
+  color:#f5f5f5;
+  line-height:1.4;
+  overflow-x:hidden;
+}
+
+/* NAVBAR */
+.nav{
+  position:sticky;
+  top:0;
+  z-index:60;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 32px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.25));
+  border-bottom:1px solid rgba(255,255,255,0.03);
+  backdrop-filter: blur(6px);
+  flex-wrap:nowrap;
+}
+.brand{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+.logo {
+  width:55px;
+  height:55px;
+  border-radius:10px;
+  overflow:hidden;
+}
+.logo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.brand h1{
+  font-size:18px;
+  margin:0;
+  font-weight:800;
+}
+
+/* Desktop links */
+.links{
+  display:flex !important;
+  gap:22px;
+  align-items:center;
+}
+.links a{
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:600;
+  transition:all .18s;
+}
+.links a:hover{
+  color:var(--accent);
+}
+
+/* Hamburger */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  background:none;
+  border:none;
+  cursor:pointer;
+}
+.hamburger span{
+  width:26px;
+  height:3px;
+  background:var(--muted);
+  border-radius:3px;
+  transition:0.3s;
+}
+.hamburger.active span:nth-child(1){
+  transform:translateY(8px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2){
+  opacity:0;
+}
+.hamburger.active span:nth-child(3){
+  transform:translateY(-8px) rotate(-45deg);
+}
+
+/* Mobile Menu */
+@media(max-width:768px){
+  .links{
+    display:none !important;
+    position:absolute;
+    top:78px;
+    right:0;
+    flex-direction:column;
+    align-items:flex-start;
+    width:170px;
+    padding:12px;
+    gap:6px;
+    background:var(--panel);
+    border-radius:12px 0 0 12px;
+    border:1px solid rgba(255,255,255,0.05);
+    box-shadow:0 12px 30px rgba(0,0,0,0.6);
+  }
+
+  .links a{
+    width:100%;
+    padding:10px 6px;
+  }
+
+  .links.show{
+    display:flex !important;
+  }
+
+  .hamburger{
+    display:flex;
+  }
+}
+
+/* HERO */
+.hero{
+  min-height:78vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:48px 20px;
+  position:relative;
+  overflow:hidden;
+  background: url("baground.jfif") center/cover no-repeat;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.65));
+  mix-blend-mode:multiply;
+}
+.hero .wrap{
+  position:relative;
+  z-index:2;
+  max-width:1100px;
+  padding:24px;
+}
+.hero h2{
+  font-size:clamp(34px, 7vw, 64px);
+  margin:0 0 12px;
+  font-weight:900;
+  color:#fff;
+  text-shadow:0 12px 36px rgba(0,0,0,0.6);
+}
+.hero p{
+  margin:0 auto;
+  color:var(--muted);
+  font-size:18px;
+  max-width:780px;
+  text-shadow:0 6px 18px rgba(0,0,0,0.5);
+}
+.hero .cta{
+  margin-top:22px;
+  display:inline-block;
+  padding:12px 24px;
+  border-radius:10px;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  color:#111;
+  font-weight:800;
+  text-decoration:none;
+  box-shadow:0 18px 40px rgba(255,0,51,0.12);
+  transition:transform .18s ease, box-shadow .18s;
+}
+.hero .cta:hover{
+  transform:translateY(-4px);
+  box-shadow:0 26px 60px rgba(255,0,51,0.16);
+}
+
+.streak{
+  position:absolute;
+  left:-10%;
+  top:30%;
+  width:120%;
+  height:220px;
+  background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.04), rgba(255,255,255,0));
+  transform:skewX(-20deg) translateX(-30%);
+  filter:blur(18px);
+  opacity:0.7;
+  z-index:1;
+  animation: streakMove 9s linear infinite;
+  pointer-events:none;
+}
+@keyframes streakMove{
+  to{ transform:skewX(-20deg) translateX(30%); }
+}
+
+/* FEATURED STRIP */
+.strip{
+  max-width:1200px;
+  margin:44px auto;
+  padding:12px 20px;
+  display:grid;
+  grid-auto-flow:column;
+  gap:18px;
+  overflow-x:auto;
+}
+.card{
+  min-width:240px;
+  background:linear-gradient(180deg,var(--panel), #111);
+  border-radius:14px;
+  padding:14px;
+  border:1px solid rgba(255,255,255,0.03);
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
+  transition:transform .18s, box-shadow .18s;
+}
+.card img{
+  width:100%;
+  border-radius:10px;
+  display:block;
+}
+.card h4{
+  margin:12px 0 6px;
+  color:var(--accent-2);
+  font-size:16px;
+}
+.card p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+}
+.card .price{
+  margin-top:10px;
+  font-weight:800;
+  color:var(--accent);
+}
+
+/* Footer */
+footer{
+  border-top:1px solid rgba(255,255,255,0.02);
+  padding:28px 20px;
+  text-align:center;
+  color:var(--muted);
+  margin-top:60px;
+}
+
+/* CINEMATIC LINES */
+.cinema-wrap {
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+.cinema-row {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+}
+.cinema-line {
+  font-size: clamp(32px, 7.5vw, 60px);
+  font-weight: 800;
+  color: var(--muted);
+  letter-spacing: 3px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+  text-align: center;
+}
+.cinema-line.show {
+  opacity: 1;
+  transform: translateY(0);
+  color: var(--accent);
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="brand">
+    <div class="logo"><img src="logo.jpg" alt="CarsMainly"></div>
+    <h1>CarsMainly</h1>
+  </div>
+
+  <nav class="links" aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- HAMBURGER BTN -->
+  <button class="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="streak"></div>
+  <div class="wrap">
+    <h2>Drive the thrill — collectible die-cast cars</h2>
+    <p>Premium miniature cars curated for collectors and kids.</p>
+    <a class="cta" href="shop.html">Browse the Collection</a>
+  </div>
+</section>
+
+<!-- CINEMATIC LINES -->
+<section class="cinema-wrap" id="cinema">
+  <div class="cinema-row">
+    <div class="cinema-line">PRECISION CRAFTED</div>
+    <div class="cinema-line">RACE INSPIRED</div>
+    <div class="cinema-line">COLLECTOR APPROVED</div>
+  </div>
+</section>
+
+<!-- FEATURED STRIP -->
+<section class="strip">
+  <div class="card">
+    <img src="featured/featured_1.jpg">
+    <h4>F1 Pack of 5</h4>
+    <p>Collectible edition</p>
+    <div class="price">₹1799</div>
+  </div>
+  <div class="card">
+    <img src="featured/featured_2.jpg">
+    <h4>2018 Bentley Continental GT3</h4>
+    <p>Gloss finish</p>
+    <div class="price">₹699</div>
+  </div>
+  <div class="card">
+    <img src="featured/featured_3.jpg">
+    <h4>Porsche 911 Carrera T</h4>
+    <p>Premium edition</p>
+    <div class="price">₹699</div>
+  </div>
+</section>
+
+<footer>
+  © 2025 CarsMainly · Crafted with speed & style
+</footer>
+
+<script>
+// Cinematic scroll reveal
+(function(){
+  const lines = document.querySelectorAll('.cinema-line');
+  const obs = new IntersectionObserver((entries, observer)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        lines.forEach((el,i)=> setTimeout(()=> el.classList.add('show'), i*250));
+        observer.disconnect();
+      }
+    });
+  }, {threshold:0.3});
+  obs.observe(document.getElementById('cinema'));
+})();
+
+// Hamburger toggle
+const ham = document.querySelector(".hamburger");
+const links = document.querySelector(".links");
+
+ham.addEventListener("click", () => {
+  ham.classList.toggle("active");
+  links.classList.toggle("show");
+});
+</script>
+
+</body>
+</html>

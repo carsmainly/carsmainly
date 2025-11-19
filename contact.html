@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CarsMainly — Contact</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg-1:#060607;
+  --bg-2:#0b0b0b;
+  --accent:#ff0033;
+  --accent-2:#ff7b6b;
+  --muted:#bfbfbf;
+  --panel:#0f0f10;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:"Poppins",sans-serif;
+  background:linear-gradient(180deg,var(--bg-1),var(--bg-2));
+  color:white;
+}
+
+/* NAV */
+.nav{
+  position:sticky; top:0; z-index:60;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:18px 32px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.25));
+  border-bottom:1px solid rgba(255,255,255,0.03);
+  backdrop-filter: blur(6px);
+}
+
+.brand{ display:flex; gap:12px; align-items:center; }
+.logo{ width:55px; height:55px; border-radius:10px; }
+
+/* Desktop links */
+.links{
+  display:flex !important;
+  gap:22px;
+  align-items:center;
+}
+.links a{
+  color:var(--muted);
+  text-decoration:none;
+  font-weight:600;
+  transition:0.2s;
+}
+.links a:hover{
+  color:var(--accent);
+}
+
+/* Hamburger identical to HOME */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  background:none;
+  border:none;
+  cursor:pointer;
+}
+.hamburger span{
+  width:26px;
+  height:3px;
+  background:var(--muted);
+  border-radius:3px;
+  transition:0.3s;
+}
+.hamburger.active span:nth-child(1){
+  transform:translateY(8px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2){
+  opacity:0;
+}
+.hamburger.active span:nth-child(3){
+  transform:translateY(-8px) rotate(-45deg);
+}
+
+/* Mobile menu same as HOME */
+@media(max-width:768px){
+  .links{
+    display:none !important;
+    position:absolute;
+    top:78px;
+    right:0;
+    flex-direction:column;
+    align-items:flex-start;
+    width:170px;
+    padding:12px;
+    gap:6px;
+    background:var(--panel);
+    border-radius:12px 0 0 12px;
+    border:1px solid rgba(255,255,255,0.05);
+    box-shadow:0 12px 30px rgba(0,0,0,0.6);
+  }
+
+  .links a{
+    width:100%;
+    padding:10px 6px;
+  }
+
+  .links.show{
+    display:flex !important;
+  }
+
+  .hamburger{
+    display:flex;
+  }
+}
+
+/* Hero */
+.hero{
+  text-align:center;
+  padding:40px 20px 10px;
+}
+.hero h2{ font-size:34px; margin:0; font-weight:800; }
+.hero p{ color:var(--muted); margin-top:10px; }
+
+/* Card */
+.wrap{ display:flex; justify-content:center; padding:40px 20px 80px; }
+.card{
+  width:100%; max-width:880px;
+  padding:28px;
+  border-radius:18px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.05);
+  box-shadow:0 20px 50px rgba(0,0,0,0.6);
+}
+
+.card-inner{
+  display:grid;
+  grid-template-columns:1fr 360px;
+  gap:28px;
+  align-items:center;
+}
+
+.left h3{ margin:0; font-size:22px; color:var(--accent); }
+.left p{ color:var(--muted); margin-top:8px; }
+
+.contact-list{ margin-top:20px; display:flex; flex-direction:column; gap:16px; }
+
+.item{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  background:rgba(255,255,255,0.03);
+  padding:14px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.06);
+  flex-wrap:wrap;
+}
+
+.icon{
+  width:44px; height:44px;
+  border-radius:10px;
+  display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  font-weight:900; color:#111;
+  flex-shrink:0;
+}
+
+.meta{
+  flex:1 1 auto;
+  min-width:0;
+}
+.meta div{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.meta small{
+  display:block;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.btn-container{
+  display:flex;
+  gap:8px;
+  flex-shrink:0;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:10px 14px;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  border:none;
+  border-radius:10px;
+  font-weight:700;
+  color:#111;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-block;
+}
+
+.ghost{
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.1);
+  color:var(--accent);
+}
+
+.map{
+  width:100%;
+  height:250px;
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.05);
+  box-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+.map iframe{
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+footer{
+  text-align:center;
+  padding:30px 20px;
+  color:var(--muted);
+  border-top:1px solid rgba(255,255,255,0.05);
+  margin-top:40px;
+}
+
+/* Responsive fixes */
+@media(max-width:1024px){
+  .card-inner{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+@media(max-width:768px){
+  .card-inner{
+    grid-template-columns:1fr;
+  }
+  .wrap{ padding:20px; }
+  .hero h2{ font-size:28px; }
+  .hero p{ font-size:15px; }
+}
+
+@media(max-width:480px){
+  .item{ flex-direction:column; align-items:flex-start; }
+  .icon{ width:40px; height:40px; }
+  .btn-container{ width:100%; gap:6px; }
+  .btn{ flex:1; text-align:center; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="brand">
+    <img src="logo.jpg" class="logo">
+    <h1>CarsMainly</h1>
+  </div>
+
+  <nav class="links">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <button class="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="hero">
+  <h2>Contact Us</h2>
+  <p>Reach out directly — fast replies.</p>
+</div>
+
+<div class="wrap">
+  <section class="card">
+    <div class="card-inner">
+
+      <div class="left">
+        <h3>CarsMainly</h3>
+        <p>Available for questions, orders, and pickup coordination.</p>
+
+        <div class="contact-list">
+
+          <div class="item">
+            <div class="icon">📞</div>
+            <div class="meta">
+              <div>+91 88915 15142</div>
+              <small>Tap to call or copy</small>
+            </div>
+            <div class="btn-container">
+              <a href="tel:+918891515142" class="btn">Call</a>
+              <button class="btn ghost" onclick="copyPhone()">Copy</button>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="icon">📷</div>
+            <div class="meta">@carsmainly</div>
+            <small>Instagram</small>
+            <div class="btn-container">
+              <a href="https://www.instagram.com/carsmainly/" target="_blank" class="btn ghost">Open</a>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="icon">📍</div>
+            <div class="meta">Kochi, Kerala <small>682017 — India</small></div>
+            <div class="btn-container">
+              <a href="https://www.google.com/maps/search/?api=1&query=Kochi%20682017%20Kerala" target="_blank" class="btn ghost">Map</a>
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="icon">✉️</div>
+            <div class="meta">carsmainlyonline@gmail.com</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="map">
+        <iframe src="https://maps.google.com/maps?q=Kochi%20682017%20Kerala&t=&z=12&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<footer>
+  © 2025 CarsMainly · Crafted with speed & style
+</footer>
+
+<script>
+function copyPhone(){
+  navigator.clipboard.writeText("+91 88915 15142");
+  alert("Phone number copied!");
+}
+
+// Hamburger identical to HOME
+const ham = document.querySelector(".hamburger");
+const links = document.querySelector(".links");
+
+ham.addEventListener("click", () => {
+  ham.classList.toggle("active");
+  links.classList.toggle("show");
+});
+</script>
+
+</body>
+</html>
