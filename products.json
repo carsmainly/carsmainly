@@ -1,10 +1,10 @@
 [
   {
     "id": 1,
-    "name": "Lamborghini cenetnario Roadster",
+    "name": "Lamborghini Cenetnario Roadster",
     "category": "Hot Wheels",
     "price": 799,
-    "description": "Yellow beauty Built by the lambo",
+    "description": "A sleek yellow beast engineered by Lamborghini",
     "image": "https://i0.wp.com/grovertechno.com/wp-content/uploads/2025/10/11-2.webp?fit=1000%2C1000&ssl=1",
     "soldOut": false
   },
@@ -13,9 +13,46 @@
     "name": "Bentely Continental GT",
     "category": "Hot Wheels",
     "price": 699,
-    "description": "sleek golden car built for competition",
+    "description": "A golden Bentley masterpiece, crafted for pure competition",
     "image": "https://i.ebayimg.com/images/g/3roAAeSwdQlpDOIE/s-l1600.webp",
+    "soldOut": false
+  },
+    {
+    "id": 3,
+    "name": "Porsche 911 Carrera T",
+    "category": "Hot Wheels",
+    "price": 699,
+    "description": "A grey beast perfected by Porsche",
+    "image": "https://carsmainly.pages.dev/featured/featured_3.jpg",
+    "soldOut": false
+  },
+    {
+    "id": 4,
+    "name": "Aston Martin DB4GT High Speed Edition",
+    "category": "Hot Wheels",
+    "price": 499,
+    "description": "A competition-ready beast with Aston Martin refinement",
+    "image": "https://samstoy.in/cdn/shop/files/rn-image_picker_lib_temp_cc82c681-df90-4261-93f7-9e1c459e9da3.jpg?v=1752154125&width=1946",
+    "soldOut": false
+  },
+    {
+    "id": 5,
+    "name": "BMW 635 CSi",
+    "category": "Hot Wheels",
+    "price": 599,
+    "description": "A sharp, competition-ready machine from BMW",
+    "image": "https://zoomsters.in/cdn/shop/files/IMG-20250929-WA0060-_1.jpg?v=1759177286&width=990",
+    "soldOut": false
+  },
+    {
+    "id": 6,
+    "name": "1983 Porsche 928S Red",
+    "category": "Hot Wheels",
+    "price": 599,
+    "description": "A retro masterpiece engineered the Porsche way",
+    "image": "https://http2.mlstatic.com/D_607199-MLB93984410785_102025-C.jpg",
     "soldOut": false
   }
 ]
+
 
